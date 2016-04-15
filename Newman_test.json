@@ -3,8 +3,7 @@
 	"name": "Newman_test",
 	"description": "",
 	"order": [
-		"29783969-36ff-1eaf-4d7d-5b0f6a5caee9",
-		"441ea69c-6061-893f-95fa-9849139b5bb5"
+		"29783969-36ff-1eaf-4d7d-5b0f6a5caee9"
 	],
 	"folders": [],
 	"timestamp": 1460710649144,
@@ -21,29 +20,11 @@
 			"method": "POST",
 			"data": null,
 			"dataMode": "params",
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\n\ntests[\"Content-Type is present\"] = postman.getResponseHeader(\"Set-Cookie\");\n\nconsole.log(postman.getResponseCookie(\"Set-Cookie\") );\n",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\n\n\nconsole.log(postman.getResponseHeader(\"Set-Cookie\") );\n\n\nvar cookie = postman.getResponseHeader(\"Set-Cookie\");\nif (cookie) {\n    console.log(cookie);\n    tests['header 返回了cookie'] === true;\n} else {\n    tests['没有返回cookie']\n};\n\n",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1460711264587,
+			"time": 1460724227813,
 			"name": "登录",
-			"description": "",
-			"collectionId": "978b47e3-9475-1344-3f7a-2bc0f8ffa85b",
-			"responses": []
-		},
-		{
-			"id": "441ea69c-6061-893f-95fa-9849139b5bb5",
-			"headers": "Cookie: {{Cookie}}\n",
-			"url": "{{url}}/api/item/530476/bargain ",
-			"preRequestScript": null,
-			"pathVariables": {},
-			"method": "POST",
-			"data": null,
-			"dataMode": "params",
-			"tests": "tests[\"Successful POST request\"] = responseCode.code === 201 || responseCode.code === 202;\n\n\ntests[\"Status code is 200\"] = responseCode.code === 200;",
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1460711004163,
-			"name": "砍价",
 			"description": "",
 			"collectionId": "978b47e3-9475-1344-3f7a-2bc0f8ffa85b",
 			"responses": []
