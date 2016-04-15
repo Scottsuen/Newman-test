@@ -33,10 +33,10 @@
 				}
 			],
 			"dataMode": "params",
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\n\n\nconsole.log(postman.getResponseHeader(\"Set-Cookie\") );\n\n\nvar cookie = postman.getResponseHeader(\"Set-Cookie\");\nif (cookie) {\n    console.log(cookie);\n    tests['header 返回了cookie'] = true;\n} else {\n    tests['没有返回cookie'] = true;\n};\n\n",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\n\n\nconsole.log(postman.getResponseHeader(\"Set-Cookie\") );\n\n\nvar cookie = postman.getResponseHeader(\"Set-Cookie\");\nif (cookie) {\n    console.log(cookie[0]);\n    tests['header 返回了cookie'] = true;\n} else {\n    tests['没有返回cookie'] = true;\n};\n\n",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1460724881493,
+			"time": 1460725726759,
 			"name": "登录",
 			"description": "",
 			"collectionId": "978b47e3-9475-1344-3f7a-2bc0f8ffa85b",
