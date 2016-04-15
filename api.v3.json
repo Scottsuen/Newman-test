@@ -1,0 +1,18 @@
+{
+	"id": "e0b09713-712d-d5af-6187-a0c7bfedd211",
+	"name": "api.v3",
+	"values": [
+		{
+			"key": "url",
+			"value": "http://api.v3.iqianggou.com",
+			"type": "text",
+			"name": "URL",
+			"enabled": true
+		}
+	],
+	"team": null,
+	"timestamp": 1460711037116,
+	"synced": false,
+	"syncedFilename": "",
+	"isDeleted": false
+}
