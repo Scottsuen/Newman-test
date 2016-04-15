@@ -13,17 +13,30 @@
 	"requests": [
 		{
 			"id": "29783969-36ff-1eaf-4d7d-5b0f6a5caee9",
-			"headers": "zoneid: {{zoneid}}\nversion: {{version}}\nwidth: {{width}}\nheight: height\nAccept: application/json\nlat: {{lat}}\nlng: {{lng}}\nContent-Type: application/x-www-form-urlencoded; charset=UTF-8\nuser-Agent: Dalvik/2.1.0 (Linux; U; Android 5.1.1; Nexus 5 Build/LMY48B)\nHost: {{url}}\nConnection: Keep-Alive\nAccept-Encoding: gzip\n",
-			"url": "{{url}}/api/user/login?mobile={{mobile}}&password={{password}}",
+			"headers": "Accept: application/json\n",
+			"url": "{{url}}/api/user/login",
 			"preRequestScript": "postman.setEnvironmentVariable(\"mobile\", \"15921729614\");\npostman.setEnvironmentVariable(\"password\", 114611);",
 			"pathVariables": {},
 			"method": "POST",
-			"data": null,
+			"data": [
+				{
+					"key": "mobile",
+					"value": "{{mobile}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "{{password}}",
+					"type": "text",
+					"enabled": true
+				}
+			],
 			"dataMode": "params",
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\n\n\nconsole.log(postman.getResponseHeader(\"Set-Cookie\") );\n\n\nvar cookie = postman.getResponseHeader(\"Set-Cookie\");\nif (cookie) {\n    console.log(cookie);\n    tests['header 返回了cookie'] === true;\n} else {\n    tests['没有返回cookie']\n};\n\n",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\n\n\nconsole.log(postman.getResponseHeader(\"Set-Cookie\") );\n\n\nvar cookie = postman.getResponseHeader(\"Set-Cookie\");\nif (cookie) {\n    console.log(cookie);\n    tests['header 返回了cookie'] = true;\n} else {\n    tests['没有返回cookie'] = true;\n};\n\n",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1460724227813,
+			"time": 1460724881493,
 			"name": "登录",
 			"description": "",
 			"collectionId": "978b47e3-9475-1344-3f7a-2bc0f8ffa85b",
