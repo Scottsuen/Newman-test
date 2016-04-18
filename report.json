@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+	<testsuite name="登录" id="29783969-36ff-1eaf-4d7d-5b0f6a5caee9" timestamp="2016-04-18T03:52:32.948Z" time="604.00 ms" tests="3" failures="0">
+		<testcase name="Status code is 200" />
+		<testcase name="登录成功，返回了正确的user_profile, 即登录手机号与返回的手机号一致" />
+		<testcase name="登录responseHeader返回了set-Cookie" />
+	</testsuite>
+</testsuites>
