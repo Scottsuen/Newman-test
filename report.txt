@@ -2,9 +2,9 @@
 Iteration 1 of 1
 用户id：232422
 用户名：小明安
-[ 'PHPSESSID=kmqo7bjth0458fgvcsi9dam170; expires=Thu, 16-Apr-2026 05:33:58 GMT; Max-Age=315360000; path=/; domain=.iqianggou.com' ]
-cookie is PHPSESSID=kmqo7bjth0458fgvcsi9dam170
-200 603ms 登录 [POST] http://api.v3.iqianggou.com/api/user/login
+[ 'PHPSESSID=l4s0prq6loqi6v3nth02fbopl3; expires=Thu, 16-Apr-2026 14:41:10 GMT; Max-Age=315360000; path=/; domain=.iqianggou.com' ]
+cookie is PHPSESSID=l4s0prq6loqi6v3nth02fbopl3
+200 681ms 登录 [POST] http://api.v3.iqianggou.com/api/user/login
     ✔ Status code is 200
     ✔ 登录成功，返回了正确的user_profile, 即登录手机号与返回的手机号一致
     ✔ 登录responseHeader返回了set-Cookie
