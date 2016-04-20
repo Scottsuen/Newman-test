@@ -1,0 +1,46 @@
+{
+	"id": "978b47e3-9475-1344-3f7a-2bc0f8ffa85b",
+	"name": "Newman_test",
+	"description": "",
+	"order": [
+		"29783969-36ff-1eaf-4d7d-5b0f6a5caee9"
+	],
+	"folders": [],
+	"timestamp": 1460710649144,
+	"owner": "413363",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "29783969-36ff-1eaf-4d7d-5b0f6a5caee9",
+			"headers": "Accept: application/json\n",
+			"url": "http://api.v3.iqianggou.com/api/user/login",
+			"preRequestScript": "postman.setEnvironmentVariable(\"mobile\", 13524375781);\npostman.setEnvironmentVariable(\"password\", 123456);",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "mobile",
+					"value": "{{mobile}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "{{password}}",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"tests": "/*\nNewman 用法：\n把这个collection保存为Newman_test.json\n$ newman -c Newman_test.json\n*/\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\n\n/*\n测试登录是否成功，登录成功的话，会返回json中有mobile字段，且与登录手机一致。\n*/\nvar loginResponseBody = JSON.parse(responseBody);\nvar userMobile = postman.getEnvironmentVariable(\"mobile\"); \ntests[\"登录成功，返回了正确的user_profile, 即登录手机号与返回的手机号一致\"] = loginResponseBody.data.mobile === _.parseInt(userMobile); \n//为什么在这里使用lodash的_.parseInt()方法：post.getEnvironmentVariable()返回的数据类型是string，而登录接口返回的mobile字段数据类型是integer，所以要转换一下userMobile的数据类型，否则测试不通过\n\nconsole.log(\"用户id：\" + loginResponseBody.data.id);\nconsole.log(\"用户名：\" + loginResponseBody.data.username);\n//在测试中使用console.log是为了输出一下有用的信息，可以输出到Newmand的output file或在webConsole中显示\n\n\n/* \n以下代码测试读取 cookie，只能在 Newman 里执行；若在postman-client里读取cookie需打开 postman 和 chrome-inspector 插件的 inspector：\n1. 测试接口 responseHeader 是否返回了 set-Cookie；\n2. 如果返回了 set-Cookie，把 cookie 取出来，传给环境变量{{cookie}}\n3. 示例：Set-Cookie = [PHPSESSID=2grl7e6g2u74m1ljo131qpn4n2; expires=Mon, 13-Apr-2026 08:50:22 GMT; Max-Age=315360000; path=/; domain=.staging.iqianggou.com]\n4. 示例：Cookie = 'PHPSESSID=2grl7e6g2u74m1ljo131qpn4n2'\n*/\nvar setCookie = postman.getResponseHeader(\"Set-Cookie\"); \n\nif (setCookie) {\n    tests[\"登录responseHeader返回了set-Cookie\"] = true;\n    \n    console.log(setCookie);\n    \n    var regExPattern = new RegExp('; expires.*');\n    //正则表达式regExPattern = /; expires.*/, 匹配setCookie中 '; expires' 起头的部分；\n   \n    var getCookie = setCookie[0].replace(regExPattern, '');\n    //把set-Cookie中匹配正则表达式的部分用空字符串替换，剩下'PHPSESSID=xxxxxxx'，传给getCookie。\n    \n    console.log(\"cookie is \" + getCookie);\n    \n    postman.setEnvironmentVariable(\"Cookie\", getCookie);\n    //设置cookie环境变量，以便后面的用例访问权限接口\n    console.log(\"{{Cookie}} = \", postman.getEnvironmentVariable(\"Cookie\"));\n    \n} else {\n    tests[\"登录responseHeader返回了set-Cookie\"] = false;\n}",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1461126769155,
+			"name": "登录",
+			"description": "",
+			"collectionId": "978b47e3-9475-1344-3f7a-2bc0f8ffa85b",
+			"responses": []
+		}
+	]
+}
